@@ -18,4 +18,31 @@ Please read the [contributing guidelines](https://github.com/CodeForPhilly/third
 
 ## Setup
 
-This project's code is still being set up by the team. Visit here again in the future or join [the discussion](#joining-the-regular-meetings).
+### Start the servers
+To run both servers:
+```sh
+# Set up react dependencies
+# From third-places/src/app/
+cd src/app/
+npm install
+npm run dev
+cd ../
+
+# In new tab
+# From thirdplaces/src/django/
+cd django/
+python3 manage.py runserver
+```
+
+### Port Numbers
+
+Access the following ports from localhost to access their respective services
+
+| Service | Port |
+|---------|------|
+| React   | 4321 |
+| Django  | 8000 |
+
+### Api Reference
+
+`/api/`: Hello world!
