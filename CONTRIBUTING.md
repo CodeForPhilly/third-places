@@ -132,6 +132,20 @@ Once your changes are approved, you can hit the `merge` button to merge to the `
 
 Please also delete the branch from Github (you'll be prompted).
 
+### Update changelog
+
+We keep a changelog following the [Keep a Changelog](https://keepachangelog.com/en/1.0.0/) format. In the unreleased section add the following line to one of the sections within unreleased:
+
+```md
+
+### Added
+
+- Add your PR title [#1](https://github.com/CodeForPhilly/third-places/pull/1)
+
+```
+
+You would use your PR's title, the number of your PR, and the link to that PR. There are a few sections: `Added, Changed, Deprecated, Removed, Fixed, Security`, and you should add your line to the section that best matches what your PR is contributing.
+
 ### Clean up
 
 Once you've merged your work go back to your terminal
