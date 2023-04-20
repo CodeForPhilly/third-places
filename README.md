@@ -18,4 +18,44 @@ Please read the [contributing guidelines](https://github.com/CodeForPhilly/third
 
 ## Setup
 
-This project's code is still being set up by the team. Visit here again in the future or join [the discussion](#joining-the-regular-meetings).
+### Requirements
+
+You will need to have a working understanding of using a Unix-like system via a terminal or shell and the instructions below use Bash commands.
+
+In order to run this app, you will need to have the following libraries installed on your machine:
+- Node: Javascript runtime
+- npm: Node Package Manager
+- Django: python web framework
+- Python 3.9+
+
+Note: These installations will not be required locally once we have the project containerized, the container will hand that.
+
+### Start the servers
+
+To run both servers:
+```sh
+# Set up react dependencies
+# From third-places/src/app/
+cd src/app/
+npm install
+npm run dev
+cd ../
+
+# In new tab
+# From thirdplaces/src/django/
+cd django/
+python3 manage.py runserver
+```
+
+### Port Numbers
+
+Access the following ports from localhost to access their respective services
+
+| Service | Port |
+|---------|------|
+| React   | 4321 |
+| Django  | 8000 |
+
+### Api Reference
+
+`/api/`: Hello world!

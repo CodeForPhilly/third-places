@@ -1,0 +1,15 @@
+# config
+.env
+
+# macOS
+.DS_Store
+
+# JS
+node_modules/
+
+# React
+src/app/build/
+
+# Django
+src/django/static
+src/django/db.sqlite3
