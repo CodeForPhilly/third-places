@@ -1,6 +1,5 @@
 #root {
   max-width: 1280px;
-  max-height: 1wh;
   margin: 0 auto;
   padding: 2rem;
   text-align: center;
@@ -47,16 +46,4 @@
   width: 80%;
   height:50%;
 
-}
-
-.leaflet-container {
-  height: 700px;
-  width: 700px;
-  margin-left: auto;
-  margin-right: auto;
-}
-
-.title {
-  font-family: Arial Black,Arial Bold,Gadget,sans-serif; 
-  font-size: 4rem;
 }
