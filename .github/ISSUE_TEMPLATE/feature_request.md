@@ -1,3 +1,12 @@
+---
+name: Feature request
+about: Suggest an idea for this project
+title: "[Feature Request] "
+labels: enhancement
+assignees: ''
+
+---
+
 # Overview
 
 Describe what you'd like to see added

@@ -18,6 +18,7 @@ and this project adheres to release number versioning.
 ### Removed
 
 ### Fixed 
+- Issue template [#9](https://github.com/CodeForPhilly/third-places/pull/9)
 
 
 [Unreleased]: 
