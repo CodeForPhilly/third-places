@@ -13,3 +13,5 @@ src/app/build/
 # Django
 src/django/static
 src/django/db.sqlite3
+*-310.pyc
+*/__pycache__/

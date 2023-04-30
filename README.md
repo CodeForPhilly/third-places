@@ -32,19 +32,15 @@ Note: These installations will not be required locally once we have the project 
 
 ### Start the servers
 
-To run both servers:
+To run all servers (React, Django, & PostgreSQL):
 ```sh
-# Set up react dependencies
-# From third-places/src/app/
-cd src/app/
-npm install
-npm run dev
-cd ../
+# Build the containers from images
+docker-compose build
+# Run the servers
+docker-compose up
 
-# In new tab
-# From thirdplaces/src/django/
-cd django/
-python3 manage.py runserver
+# OR for a single command to do both
+docker-compose up --build
 ```
 
 ### Port Numbers
@@ -54,7 +50,7 @@ Access the following ports from localhost to access their respective services
 | Service | Port |
 |---------|------|
 | React   | 4321 |
-| Django  | 8000 |
+| Django  | 8321 |
 
 ### Api Reference
 
