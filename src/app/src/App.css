@@ -49,13 +49,6 @@
 
 }
 
-.leaflet-container {
-  height: 700px;
-  width: 700px;
-  margin-left: auto;
-  margin-right: auto;
-}
-
 .title {
   font-family: Arial Black,Arial Bold,Gadget,sans-serif; 
   font-size: 4rem;
