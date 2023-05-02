@@ -28,7 +28,43 @@ In order to run this app, you will need to have the following libraries installe
 - Django: python web framework
 - Python 3.9+
 
-Note: These installations will not be required locally once we have the project containerized, the container will hand that.
+Also you will need to have the following libraries installed on your machine:
+
+- Docker (Docker for Mac, or Docker for Windows) 
+
+Link for installation : https://docs.docker.com/get-docker/
+
+- If you are using a Linux (Ubuntu) machine, you can use the following commands in the terminal :
+
+```sh
+sudo apt-get update
+sudo apt-get install \
+    ca-certificates \
+    curl \
+    gnupg
+```
+
+```sh
+sudo install -m 0755 -d /etc/apt/keyrings
+curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo gpg --dearmor -o /etc/apt/keyrings/docker.gpg
+sudo chmod a+r /etc/apt/keyrings/docker.gpg
+```
+
+```sh
+echo \
+  "deb [arch="$(dpkg --print-architecture)" signed-by=/etc/apt/keyrings/docker.gpg] https://download.docker.com/linux/ubuntu \
+  "$(. /etc/os-release && echo "$VERSION_CODENAME")" stable" | \
+  sudo tee /etc/apt/sources.list.d/docker.list > /dev/null
+```
+```sh
+sudo apt-get update
+```
+```sh
+sudo apt-get install docker-ce docker-ce-cli containerd.io docker-buildx-plugin docker-compose-plugin
+```
+
+
+#### Note: These installations will not be required locally once we have the project containerized, the container will hand that.
 
 ### Start the servers
 
