@@ -30,6 +30,19 @@ In order to run this app, you will need to have the following libraries installe
 
 Note: These installations will not be required locally once we have the project containerized, the container will hand that.
 
+### Create .env file
+
+#### Why a .env?
+We will be using a `.env` file to share environment variables with each of the Docker containers and separate our environment variables from our code.
+
+#### Make the actual file
+
+Duplicate the `.env.sample` file and rename it to `.env`
+
+#### Note
+
+The `.env` file is ignored by git and so any changes will have to be communicated to the team to make sure API keys etc. stay aligned from dev to dev.
+
 ### Start the servers
 
 To run all servers (React, Django, & PostgreSQL):
