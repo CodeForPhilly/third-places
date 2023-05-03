@@ -1,5 +1,5 @@
 from django.db import models
-from django.contrib.gis.db import models
+from django.contrib.gis.db import models as gis_models
 from django.contrib.auth.models import PermissionsMixin
 from django.contrib.auth.base_user import AbstractBaseUser
 from django.contrib.auth.models import Group, Permission
@@ -47,7 +47,7 @@ class TagType(models.Model):
 
 
 class Location(models.Model):
-    location = models.PointField()
+    location = gis_models.PointField()
     name = models.TextField()
     address = models.TextField()
     hours = models.ForeignKey(BusinessHours, on_delete=models.CASCADE)
