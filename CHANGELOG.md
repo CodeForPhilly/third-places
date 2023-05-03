@@ -11,6 +11,7 @@ and this project adheres to release number versioning.
 
 - Set up React and Django boilerplate [#1](https://github.com/CodeForPhilly/third-places/pull/1)
 - Added Docker containers with docker-compose [#10](https://github.com/CodeForPhilly/third-places/pull/10)
+- Added initial Django models & migration [#21](https://github.com/CodeForPhilly/third-places/pull/21)
 
 ### Changed
 
