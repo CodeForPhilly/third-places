@@ -21,9 +21,11 @@ function Map() {
             </Marker>
         </MapContainer>
       </div>
-      <Button style={{backgroundColor:"#ADD8E6"}} variant="primary">Primary</Button>{' '}
-      <Button style={{backgroundColor:"#ADD8E6"}} variant="secondary">Secondary</Button>
-      <Button style={{backgroundColor:"#ADD8E6"}} variant="success">Success</Button>
+      <div className="button-container">
+        <Button style={{backgroundColor:"#ADD8E6", marginLeft: '1rem', marginRight: '1rem'}} variant="primary">Near Me</Button>
+        <Button style={{backgroundColor:"#ADD8E6", marginLeft: '1rem', marginRight: '1rem'}} variant="primary">On the Way To</Button>
+        <Button style={{backgroundColor:"#ADD8E6", marginLeft: '1rem', marginRight: '1rem'}} variant="primary">Around Destination</Button>
+      </div>
     </div>
   )
 }
