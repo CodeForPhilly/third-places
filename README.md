@@ -67,4 +67,6 @@ Access the following ports from localhost to access their respective services
 
 ### Api Reference
 
-`/api/`: Hello world!
+- `/api/`: Hello world!
+- `/users/`: `GET`, `POST` users
+- `/users/{id}`: `GET`, `PUT` specific user details
