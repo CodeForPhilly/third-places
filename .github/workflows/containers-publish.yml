@@ -47,7 +47,6 @@ jobs:
     - name: 'Build Docker container image: frontend:latest'
       run: |
         docker build \
-            --target runtime \
             --cache-from "${DOCKER_REPOSITORY}/frontend:latest" \
             --tag "${DOCKER_REPOSITORY}/frontend:latest" \
             --tag "${DOCKER_REPOSITORY}/frontend:${DOCKER_TAG}" \
