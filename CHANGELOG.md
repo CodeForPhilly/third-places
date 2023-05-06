@@ -15,7 +15,7 @@ and this project adheres to release number versioning.
 - Added initial Django models & migration [#21](https://github.com/CodeForPhilly/third-places/pull/21)
 
 ### Changed
-
+- Made Leaflet map element fullscreen and rmeoved title[#27](https://github.com/CodeForPhilly/third-places/issues/27)
 ### Deprecated
 
 ### Removed
