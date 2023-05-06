@@ -5,7 +5,7 @@ import Button from 'react-bootstrap/Button';
 
 
 function Map() {
-
+  const buttonStyle = {backgroundColor:"#ADD8E6", marginLeft: '1rem', marginRight: '1rem'}
   return (
     <div className="leaflet-container-wrapper">
       <div className="leaflet-container">    
@@ -22,9 +22,9 @@ function Map() {
         </MapContainer>
       </div>
       <div className="button-container">
-        <Button style={{backgroundColor:"#ADD8E6", marginLeft: '1rem', marginRight: '1rem'}} variant="primary">Near Me</Button>
-        <Button style={{backgroundColor:"#ADD8E6", marginLeft: '1rem', marginRight: '1rem'}} variant="primary">On the Way To</Button>
-        <Button style={{backgroundColor:"#ADD8E6", marginLeft: '1rem', marginRight: '1rem'}} variant="primary">Around Destination</Button>
+        <Button style={buttonStyle} variant="primary">Near Me</Button>
+        <Button style={buttonStyle} variant="primary">On the Way To</Button>
+        <Button style={buttonStyle} variant="primary">Around Destination</Button>
       </div>
     </div>
   )
