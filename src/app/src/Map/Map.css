@@ -1,4 +1,21 @@
+.leaflet-container-wrapper {
+  display: flex;
+  flex-flow: column nowrap;
+  height: 100vh;
+}
+
 .leaflet-container {
   width: 100vw;
-  height: 100vh;
+  height: 100%;
+  flex-grow: 1;
+}
+
+.button-container {
+  display: flex;
+  flex-flow: row nowrap;
+  justify-content: center;
+  z-index: 1000;
+  width: 100vw;
+  padding: 1rem 0;
+  background-color: white;
 }
