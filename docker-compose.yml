@@ -1,0 +1,61 @@
+---
+services:
+  app:
+    image: node:18-slim
+    build:
+      context: ./src/app
+      dockerfile: Dockerfile
+    working_dir: /usr/local/src
+    environment:
+      - PORT=4321
+    volumes:
+      - ./src/app:/usr/local/src
+      - node-modules-volume:/usr/local/src/node_modules
+    command: npm run dev --host
+    ports:
+      - 4321:4321
+
+  database:
+    image: postgis/postgis:13-3.1
+    environment:
+      - POSTGRES_USER=$THIRDPLACES
+      - POSTGRES_PASSWORD=$THIRDPLACES
+      - POSTGRES_DB=$THIRDPLACES
+    healthcheck:
+      test: ["CMD", "pg_isready", "-U", "$THIRDPLACES", "-h", "database"]
+      interval: 1s
+      timeout: 30s
+      retries: 30
+
+  django:
+    image: python:3.10-slim
+    env_file: .env
+    environment:
+      - PGHOST=database
+      - PGPORT=5432
+      - PGUSER=$THIRDPLACES
+      - PGPASSWORD=$THIRDPLACES
+      - PGDATABASE=$THIRDPLACES
+      - DJANGO_ENV=Development
+      - DJANGO_SECRET_KEY=secret
+      - DJANGO_LOG_LEVEL=INFO
+      - DJANGO_ALLOWED_HOSTS=localhost,django
+    build:
+      context: ./src/django
+      dockerfile: Dockerfile
+      labels:
+        com.project.name: "third-places"
+    volumes:
+      - ./src/django:/usr/local/src
+    working_dir: /usr/local/src
+    depends_on:
+      database:
+        condition: service_healthy
+    command: >
+      bash -c
+        "python3 manage.py migrate && python3 manage.py runserver 0.0.0.0:8321"
+    ports:
+      - 8321:8321
+
+volumes:
+  node-modules-volume:
