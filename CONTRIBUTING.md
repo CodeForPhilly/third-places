@@ -160,3 +160,7 @@ git pull
 # Delete the branch from your local machine
 git branch -d <new-branch-name>
 ```
+
+## Creating a release
+
+See the [RELEASES.md](https://github.com/CodeForPhilly/third-places/blob/develop/RELEASES.md) for an explanation of this process
