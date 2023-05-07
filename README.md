@@ -24,7 +24,7 @@ You will need to have a working understanding of using a Unix-like system via a 
 
 In order to run this app, you will need to have the following libraries installed on your machine:
 
-Docker (Docker for Mac, or Docker for Windows) **https://docs.docker.com/get-docker/**
+Docker (Docker for Mac, or Docker for Windows) [Install here](https://docs.docker.com/get-docker/)
 
 Note: These installations will not be required locally once we have the project containerized, the container will hand that.
 
