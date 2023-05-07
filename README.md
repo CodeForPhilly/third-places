@@ -23,37 +23,23 @@ Please read the [contributing guidelines](https://github.com/CodeForPhilly/third
 You will need to have a working understanding of using a Unix-like system via a terminal or shell and the instructions below use Bash commands.
 
 In order to run this app, you will need to have the following libraries installed on your machine:
-- Node: Javascript runtime
-- npm: Node Package Manager
-- Django: python web framework
-- Python 3.9+
+- Docker [Install here](https://www.docker.com/products/docker-desktop/)
 
-Note: These installations will not be required locally once we have the project containerized, the container will hand that.
+### First time setup
 
-### Create .env file
-
-#### Why a .env?
-We will be using a `.env` file to share environment variables with each of the Docker containers and separate our environment variables from our code.
-
-#### Make the actual file
-
-Duplicate the `.env.sample` file and rename it to `.env`
-
-#### Note
-
-The `.env` file is ignored by git and so any changes will have to be communicated to the team to make sure API keys etc. stay aligned from dev to dev.
+```sh
+./scripts/bootstrap
+./scripts/update
+# This script will set up everything you need to get started.
+```
 
 ### Start the servers
 
-To run all servers (React, Django, & PostgreSQL):
 ```sh
-# Build the containers from images
-docker-compose build
-# Run the servers
-docker-compose up
-
-# OR for a single command to do both
-docker-compose up --build
+# If you haven't updated in a while, run update script.
+./scripts/update
+# To run all servers (React, Django, & PostgreSQL):
+./scripts/server
 ```
 
 ### Port Numbers
