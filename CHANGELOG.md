@@ -14,6 +14,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Changed
 
+- Update docs with release process [#40](https://github.com/CodeForPhilly/third-places/pull/40)
+
 ### Deprecated
 
 ### Removed
