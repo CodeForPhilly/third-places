@@ -47,7 +47,7 @@ class TagType(models.Model):
 
 
 class Location(models.Model):
-    location = gis_models.PointField()
+    location = gis_models.PointField(srid=4326)
     name = models.TextField()
     address = models.TextField()
     hours = models.ForeignKey(BusinessHours, on_delete=models.CASCADE)

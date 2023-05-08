@@ -2,12 +2,32 @@ from django.http import HttpResponse
 from rest_framework import status
 from rest_framework.decorators import api_view
 from rest_framework.response import Response
-from .serializers import ThirdPlaceUserSerializer, ThirdPlaceUserPutSerializer
-from .models import ThirdPlaceUser
+from .serializers import LocationSerializer, ThirdPlaceUserSerializer, ThirdPlaceUserPutSerializer
+from .models import Location, ThirdPlaceUser
 
 
 def index(request):
     return HttpResponse("Hello, world!")
+
+
+@api_view(['GET'])
+def location_list(request):
+    if request.method == 'GET':
+        locations = Location.objects.all()
+        serializer = LocationSerializer(locations, many=True)
+        return Response(serializer.data)
+
+
+@api_view(['GET'])
+def location_detail(request, pk):
+    try:
+        user = Location.objects.get(pk=pk)
+    except Location.DoesNotExist:
+        return Response(status=status.HTTP_404_NOT_FOUND)
+
+    if request.method == 'GET':
+        serializer = LocationSerializer(user)
+        return Response(serializer.data)
 
 
 @api_view(['GET', 'POST'])
