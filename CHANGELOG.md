@@ -11,6 +11,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 - Added initial REST endpoints for Users [#23](https://github.com/CodeForPhilly/third-places/pull/23)
 - Added buttons at bottom of Map [#40](https://github.com/CodeForPhilly/third-places/pull/40)
+- Add location endpoints [#44](https://github.com/CodeForPhilly/third-places/pull/44)
 
 ### Changed
 
