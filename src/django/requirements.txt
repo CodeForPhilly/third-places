@@ -2,3 +2,4 @@ django==4.2
 djangorestframework==3.14.0
 djangorestframework-gis==1.0
 psycopg2==2.9.6
+requests==2.30.0
