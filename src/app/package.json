@@ -6,6 +6,7 @@
   "scripts": {
     "dev": "vite --host --port 4321",
     "build": "tsc && vite build",
+    "prod": "npm run build && rm -rf ../django/dist && mv -f dist ../django/static",
     "preview": "vite preview"
   },
   "dependencies": {
