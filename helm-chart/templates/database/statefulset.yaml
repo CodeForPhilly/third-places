@@ -29,16 +29,10 @@ spec:
       containers:
       - name: postgresql
         image: {{ .Values.postgresql.image.repository }}:{{ .Values.postgresql.image.tag }}
-        {{- if or .Values.postgresql.config .Values.postgresql.existingSecret }}
-        envFrom:
-        {{- if .Values.postgresql.config }}
-        - configMapRef:
-            name: {{ include "third-places.fullname" . }}-postgresql
-        {{- end }}
         {{- if .Values.postgresql.existingSecret }}
+        envFrom:
         - secretRef:
             name: {{ .Values.postgresql.existingSecret }}
-        {{- end }}
         {{- end }}
         ports:
         - containerPort: 5432
