@@ -32,6 +32,8 @@ spec:
           command: [ 'python3', 'manage.py' ]
           args: [ 'runserver', '0.0.0.0:80' ]
           env:
+            - name: DJANGO_ALLOWED_HOSTS
+              value: '*'
             - name: PGHOST
               value: {{ include "third-places.fullname" . }}-postgresql
             - name: PGPORT
