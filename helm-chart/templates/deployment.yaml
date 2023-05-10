@@ -29,6 +29,8 @@ spec:
         - name: {{ .Chart.Name }}
           image: "{{ .Values.image.repository }}:{{ .Values.image.tag | default .Chart.AppVersion }}"
           imagePullPolicy: {{ .Values.image.pullPolicy }}
+          command: [ 'python3', 'manage.py' ]
+          args: [ 'runserver', '80' ]
           env:
             - name: PGHOST
               value: {{ include "third-places.fullname" . }}-postgresql
