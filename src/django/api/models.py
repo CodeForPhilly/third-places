@@ -46,29 +46,12 @@ class TagType(models.Model):
         return self.code
 
 
-class Location(models.Model):
-    location = gis_models.PointField()
-    name = models.TextField()
-    address = models.TextField()
-    hours = models.ForeignKey(BusinessHours, on_delete=models.CASCADE)
-    location_type = models.ForeignKey(LocationType, on_delete=models.CASCADE)
-    price_category = models.CharField(max_length=5)
-    created_datetime = models.DateTimeField()
-    modified_datetime = models.DateTimeField()
-
-    REQUIRED_FIELDS = ["location", "location_type", "created_datetime", "modified_datetime"]
-
-    def __str__(self):
-        return self.name
-
-
 class Tag(models.Model):
     name = models.TextField()
-    locations = models.ManyToManyField(Location, related_name='tags')
     tag_type = models.ForeignKey(TagType, on_delete=models.CASCADE)
     value = models.DecimalField(decimal_places=1, max_digits=2)
-    created_datetime = models.DateTimeField()
-    modified_datetime = models.DateTimeField()
+    created_datetime = models.DateTimeField(auto_now_add=True)
+    modified_datetime = models.DateTimeField(auto_now=True)
 
     REQUIRED_FIELDS = ["name", "tag_type", "value", "created_datetime", "modified_datetime"]
 
@@ -76,11 +59,29 @@ class Tag(models.Model):
         return self.name
 
 
+class Location(models.Model):
+    location = gis_models.PointField(srid=4326)
+    name = models.TextField()
+    address = models.TextField()
+    hours = models.ManyToManyField(BusinessHours, related_name='locations', blank=True)
+    location_type = models.ForeignKey(LocationType, on_delete=models.CASCADE)
+    tags = models.ManyToManyField(Tag, related_name='tags')
+    price_category = models.CharField(max_length=5)
+    created_datetime = models.DateTimeField(auto_now_add=True)
+    modified_datetime = models.DateTimeField(auto_now=True)
+
+    REQUIRED_FIELDS = ["location", "location_type", "created_datetime", "modified_datetime"]
+
+    def __str__(self):
+        return self.name
+
+
 class ThirdPlaceUser(AbstractBaseUser, PermissionsMixin):
     email = models.EmailField(unique=True)
+    username = models.CharField(max_length=150, unique=True)
     display_name = models.TextField()
-    created_datetime = models.DateTimeField()
-    modified_datetime = models.DateTimeField()
+    created_datetime = models.DateTimeField(auto_now_add=True)
+    modified_datetime = models.DateTimeField(auto_now=True)
 
     groups = models.ManyToManyField(
         Group,
