@@ -35,7 +35,10 @@ spec:
             - name: PGPORT
               value: "5432"
             - name: PGDATABASE
-              value: thirdplaces
+              valueFrom:
+                secretKeyRef:
+                  name: {{ .Values.postgresql.existingSecret }}
+                  key: POSTGRES_DB
             - name: PGUSER
               valueFrom:
                 secretKeyRef:
