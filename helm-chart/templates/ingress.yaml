@@ -1,6 +1,5 @@
 {{- if .Values.ingress.enabled -}}
 {{- $fullName := include "third-places.fullname" . -}}
-{{- $svcPort := .Values.service.port -}}
 apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
@@ -36,9 +35,23 @@ spec:
             pathType: Prefix
             backend:
               service:
+                name: {{ $fullName }}-frontend
+                port:
+                  name: http
+          - path: {{ . | trimSuffix "/" }}/api/
+            pathType: Prefix
+            backend:
+              service:
                 name: {{ $fullName }}
                 port:
-                  number: {{ $svcPort }}
+                  name: http
+          - path: {{ . | trimSuffix "/" }}/admin/
+            pathType: Prefix
+            backend:
+              service:
+                name: {{ $fullName }}
+                port:
+                  name: http
           {{- end }}
     {{- end }}
 {{- end }}
