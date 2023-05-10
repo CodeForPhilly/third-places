@@ -70,3 +70,4 @@ postgresql:
   affinity: {}
   tolerations: []
   serviceType: ClusterIP
+  nodePort: ~
