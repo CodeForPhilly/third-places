@@ -52,6 +52,13 @@ spec:
                 name: {{ $fullName }}
                 port:
                   name: http
+          - path: {{ . | trimSuffix "/" }}/static/admin/
+            pathType: Prefix
+            backend:
+              service:
+                name: {{ $fullName }}
+                port:
+                  name: http
           {{- end }}
     {{- end }}
 {{- end }}
