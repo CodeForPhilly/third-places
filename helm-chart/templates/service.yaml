@@ -4,6 +4,7 @@ metadata:
   name: {{ include "third-places.fullname" . }}
   labels:
     {{- include "third-places.labels" . | nindent 4 }}
+    app.kubernetes.io/component: application
 spec:
   type: {{ .Values.service.type }}
   ports:
@@ -13,3 +14,4 @@ spec:
       name: http
   selector:
     {{- include "third-places.selectorLabels" . | nindent 4 }}
+    app.kubernetes.io/component: application

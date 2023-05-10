@@ -7,6 +7,7 @@ metadata:
   name: {{ $fullName }}
   labels:
     {{- include "third-places.labels" . | nindent 4 }}
+    app.kubernetes.io/component: application
   {{- with .Values.ingress.annotations }}
   annotations:
     {{- toYaml . | nindent 4 }}

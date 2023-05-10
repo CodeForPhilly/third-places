@@ -53,3 +53,20 @@ nodeSelector: {}
 tolerations: []
 
 affinity: {}
+
+postgresql:
+  image:
+    repository: postgres
+    tag: 13
+  imagePullSecrets: {}
+  replicas: 1
+  volumes:
+    data:
+      size: 5Gi
+  existingSecret: postgresql
+  config: {}
+  podAnnotations: {}
+  nodeSelector: {}
+  affinity: {}
+  tolerations: []
+  serviceType: ClusterIP
