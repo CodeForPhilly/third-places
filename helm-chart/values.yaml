@@ -64,7 +64,6 @@ postgresql:
     data:
       size: 5Gi
   existingSecret: postgresql
-  config: {}
   podAnnotations: {}
   nodeSelector: {}
   affinity: {}
