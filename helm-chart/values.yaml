@@ -56,8 +56,8 @@ affinity: {}
 
 postgresql:
   image:
-    repository: postgres
-    tag: 13
+    repository: postgis/postgis
+    tag: 13-3.1
   imagePullSecrets: {}
   replicas: 1
   volumes:
