@@ -1,10 +1,10 @@
 ---
 services:
   app:
-    image: node:18-slim
     build:
       context: ./src/app
       dockerfile: Dockerfile
+      target: environment
     working_dir: /usr/local/src
     environment:
       - PORT=4321
