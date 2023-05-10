@@ -1,0 +1,95 @@
+apiVersion: apps/v1
+kind: StatefulSet
+metadata:
+  name: {{ include "third-places.fullname" . }}-postgresql
+  labels:
+    {{- include "third-places.labels" . | nindent 4 }}
+    app.kubernetes.io/component: postgresql
+spec:
+  replicas: {{ .Values.postgresql.replicas }}
+  selector:
+    matchLabels:
+      {{- include "third-places.selectorLabels" . | nindent 6 }}
+      app.kubernetes.io/component: postgresql
+  serviceName: postgresql
+  template:
+    metadata:
+      labels:
+        {{- include "third-places.selectorLabels" . | nindent 8 }}
+        app.kubernetes.io/component: postgresql
+      {{- with .Values.postgresql.podAnnotations }}
+      annotations:
+        {{- toYaml . | nindent 8 }}
+      {{- end }}
+    spec:
+    {{- with .Values.postgresql.imagePullSecrets }}
+      imagePullSecrets:
+      {{ toYaml . | nindent 6 }}
+    {{- end }}
+      containers:
+      - name: postgresql
+        image: {{ .Values.postgresql.image.repository }}:{{ .Values.postgresql.image.tag }}
+        {{- if or .Values.postgresql.config .Values.postgresql.existingSecret }}
+        envFrom:
+        {{- if .Values.postgresql.config }}
+        - configMapRef:
+            name: {{ include "third-places.fullname" . }}-postgresql
+        {{- end }}
+        {{- if .Values.postgresql.existingSecret }}
+        - secretRef:
+            name: {{ .Values.postgresql.existingSecret }}
+        {{- end }}
+        {{- end }}
+        ports:
+        - containerPort: 5432
+          name: postgresql
+        {{- if .Values.postgresql.volumes }}
+        volumeMounts:
+          {{- if .Values.postgresql.volumes.data }}
+          - name: data
+            mountPath: /var/lib/postgresql/data
+            subPath: postgresql-data
+          {{- end }}
+        {{- end }}
+        readinessProbe:
+          tcpSocket:
+            port: 5432
+          initialDelaySeconds: 5
+          periodSeconds: 10
+        livenessProbe:
+          tcpSocket:
+            port: 5432
+          initialDelaySeconds: 15
+          periodSeconds: 20
+
+      {{- with .Values.postgresql.nodeSelector }}
+      nodeSelector:
+        {{- toYaml . | nindent 8 }}
+      {{- end }}
+
+      {{- with .Values.postgresql.affinity }}
+      affinity:
+        {{- toYaml . | nindent 8 }}
+      {{- end }}
+
+      {{- with .Values.postgresql.tolerations }}
+      tolerations:
+        {{- toYaml . | nindent 8 }}
+      {{- end }}
+
+  {{- if .Values.postgresql.volumes }}
+  volumeClaimTemplates:
+    {{- if .Values.postgresql.volumes.data }}
+    - metadata:
+        name: data
+      spec:
+        accessModes:
+          - ReadWriteOnce
+        {{- if .Values.postgresql.volumes.data.storageClassName }}
+        storageClassName: {{ .Values.postgresql.volumes.data.storageClassName }}
+        {{- end }}
+        resources:
+          requests:
+            storage: {{ .Values.postgresql.volumes.data.size }}
+    {{- end }}
+  {{- end }}
