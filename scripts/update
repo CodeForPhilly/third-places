@@ -1,0 +1,6 @@
+#!/bin/bash
+set -e
+
+# Build React app
+echo "==> Building Third-Places app..."
+docker-compose build --no-cache
